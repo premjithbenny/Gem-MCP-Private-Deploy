@@ -1,4 +1,3 @@
-```bash
 #!/usr/bin/env bash
 # GeM MCP deployment for Ubuntu, including ARM64 systems.
 # Run from the project directory:
@@ -169,4 +168,3 @@ echo
 echo "IMPORTANT: Confirm server.py reads the PORT environment variable."
 echo "Configure Open WebUI separately using the Docker command in README.md."
 echo "Do not expose MCP publicly without suitable access controls and TLS."
-```
