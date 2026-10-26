@@ -42,7 +42,7 @@ Deploy on **Render** and connect from **Claude Code**, **Claude Web**, or any MC
 
 ### 1. Clone and Install
 ```bash
-git clone <your-repo-url>
+git clone https://github.com/premjithbenny/Gem-MCP-Private-Deploy.git
 cd gem_mcp
 pip install -r requirements.txt
 ```
