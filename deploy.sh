@@ -10,7 +10,7 @@ set -Eeuo pipefail
 
 APP_DIR="/opt/gem_mcp"
 SERVICE_NAME="gem-mcp"
-MCP_PORT="7000"
+MCP_PORT="8001"
 WEBUI_PORT="3000"
 PYTHON_BIN="${PYTHON_BIN:-python3}"
 INSTALL_MONGODB="${INSTALL_MONGODB:-0}"
