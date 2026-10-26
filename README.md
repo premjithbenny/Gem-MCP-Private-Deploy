@@ -78,12 +78,12 @@ The script installs dependencies, copies the application into `/opt/gem_mcp`, co
 
 ```bash
 sudo systemctl status gem-mcp --no-pager
-curl -fsS http://127.0.0.1:7000/health
+curl -fsS http://127.0.0.1:8002/health
 echo
-sudo ss -lntp | grep ':7000'
+sudo ss -lntp | grep ':8002'
 ```
 
-The service should be active and listening on port `7000`.
+The service should be active and listening on port `8002`.
 
 ### 5. Install Open WebUI
 
@@ -127,7 +127,7 @@ Create a new MCP server connection with these settings:
 |---|---|
 | Name | `GeM MCP` |
 | Connection type | `MCP Streamable HTTP` |
-| Server URL | `http://SERVER_LAN_IP:7000/mcp` |
+| Server URL | `http://SERVER_LAN_IP:8002/mcp` |
 
 Replace `SERVER_LAN_IP` with your server's actual LAN IP address.
 
@@ -171,7 +171,7 @@ When Open WebUI runs in Docker, `127.0.0.1` refers to the container itself, not 
 Use the host's reachable LAN IP for the MCP URL:
 
 ```text
-http://SERVER_LAN_IP:7000/mcp
+http://SERVER_LAN_IP:8002/mcp
 ```
 
 Alternatively, on Docker for Linux, you can configure the container with:
@@ -183,7 +183,7 @@ Alternatively, on Docker for Linux, you can configure the container with:
 Then use:
 
 ```text
-http://host.docker.internal:7000/mcp
+http://host.docker.internal:8002/mcp
 ```
 
 The MCP server must listen on a host interface reachable from the container, and the host firewall must allow the connection.
@@ -294,7 +294,7 @@ sudo journalctl -u gem-mcp -f
 Check the health endpoint:
 
 ```bash
-curl -v http://127.0.0.1:7000/health
+curl -v http://127.0.0.1:8002/health
 ```
 
 ## Troubleshooting
@@ -304,8 +304,8 @@ curl -v http://127.0.0.1:7000/health
 ```bash
 sudo systemctl status gem-mcp --no-pager
 sudo journalctl -u gem-mcp -n 100 --no-pager
-sudo ss -lntp | grep ':7000'
-curl -v http://127.0.0.1:7000/health
+sudo ss -lntp | grep ':8002'
+curl -v http://127.0.0.1:8002/health
 ```
 
 Check the service configuration and confirm that `server.py` reads the `PORT` environment variable.
@@ -313,7 +313,7 @@ Check the service configuration and confirm that `server.py` reads the `PORT` en
 ### Open WebUI cannot connect to MCP
 
 - Confirm the server URL ends in `/mcp`.
-- Confirm that the service listens on port `7000`.
+- Confirm that the service listens on port `8002`.
 - Use the host's reachable IP address rather than `127.0.0.1` from inside Docker.
 - Check firewall rules and Docker networking.
 - Confirm that the connection type is MCP Streamable HTTP.
@@ -344,13 +344,13 @@ Try a broader keyword, inspect the tool output, and verify the requested status 
 
 - Keep `.env` out of version control.
 - Commit `.env.example` with placeholder values only.
-- Restrict ports `7000` and `3000` to trusted clients.
+- Restrict ports `8002` and `3000` to trusted clients.
 - Do not expose MCP directly to the public internet without appropriate authentication, TLS, and network controls.
 - Back up configuration and persistent data before making deployment changes.
 - Verify bid details and deadlines on the official GeM website.
 
 ## Notes
 
-The deployment script, Python server, and systemd service must all be configured consistently for port `7000`. Open WebUI is exposed on host port `3000`, mapped to container port `8080`.
+The deployment script, Python server, and systemd service must all be configured consistently for port `8002`. Open WebUI is exposed on host port `3000`, mapped to container port `8080`.
 
 Check the actual repository filenames and application configuration before deployment.
