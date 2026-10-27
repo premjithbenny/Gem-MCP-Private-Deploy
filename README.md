@@ -159,6 +159,14 @@ If the tool is missing, check the MCP server logs and confirm that the URL ends 
 3. Open the chat's **Tools** selector, tool menu, or equivalent control for your Open WebUI version.
 4. Enable the GeM MCP search tool or the tools exposed by the `GeM MCP` connection.
 5. Enter a procurement-related query and send it.
+Query:
+```text
+keyword: servers
+search_type: fullText
+max_results: 10
+status: open
+save_to_db: true
+```
 
 If your version automatically makes connected MCP tools available, you may not need to enable them manually. Tool selection and naming vary by version.
 
